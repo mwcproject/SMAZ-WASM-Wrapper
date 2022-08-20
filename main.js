@@ -50,6 +50,12 @@ class Smaz {
 		// Compress
 		static compress(input) {
 		
+			// Check if instance doesn't exist
+			if(typeof Smaz.instance === "undefined")
+			
+				// Set instance
+				Smaz.instance = smaz();
+		
 			// Check if instance is invalid
 			if(Smaz.instance === Smaz.INVALID)
 			
@@ -113,6 +119,12 @@ class Smaz {
 		
 		// Decompress
 		static decompress(input) {
+		
+			// Check if instance doesn't exist
+			if(typeof Smaz.instance === "undefined")
+			
+				// Set instance
+				Smaz.instance = smaz();
 		
 			// Check if instance is invalid
 			if(Smaz.instance === Smaz.INVALID)

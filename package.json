@@ -1,0 +1,25 @@
+{
+	"name": "@nicolasflamel/smaz-wasm",
+	"version": "0.0.3",
+	"description": "WASM wrapper around parts of the official SMAZ implementation",
+	"main": "dist/SMAZ.js",
+	"files": [
+		"dist/*"
+	],
+	"scripts": {
+		"build": "make dependencies && make nodejs",
+		"prepublishOnly": "npm run build"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/NicolasFlamel1/SMAZ-WASM-Wrapper.git"
+	},
+	"keywords": [
+		"SMAZ"	
+	],
+	"author": "Nicolas Flamel",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/NicolasFlamel1/SMAZ-WASM-Wrapper/issues"
+	}
+}
