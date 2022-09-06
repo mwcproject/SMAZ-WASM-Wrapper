@@ -1,10 +1,10 @@
 {
 	"name": "@nicolasflamel/smaz-wasm",
-	"version": "0.0.4",
+	"version": "0.0.5",
 	"description": "WASM wrapper around parts of the official SMAZ implementation",
-	"main": "dist/SMAZ.js",
+	"main": "./dist/index.js",
 	"files": [
-		"dist/*"
+		"./dist/*"
 	],
 	"scripts": {
 		"build": "make dependencies && make npm",
@@ -21,5 +21,8 @@
 	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/NicolasFlamel1/SMAZ-WASM-Wrapper/issues"
+	},
+	"optionalDependencies": {
+		"@nicolasflamel/smaz-native": "^0.0.5"
 	}
 }

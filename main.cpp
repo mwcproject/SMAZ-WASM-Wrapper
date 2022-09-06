@@ -1,11 +1,44 @@
 // Header files
-#include <emscripten.h>
 #include <cstddef>
 #include <cstdint>
 #include <cstring>
-#include "smaz.h"
+
+// Check if using Emscripten
+#ifdef __EMSCRIPTEN__
+
+	// Header files
+	#include <emscripten.h>
+	#include "smaz.h"
+
+// Otherwise
+#else
+
+	// Header files
+	extern "C" {
+		#include "smaz.h"
+	}
+#endif
 
 using namespace std;
+
+
+// Definitions
+
+// Check if using Emscripten
+#ifdef __EMSCRIPTEN__
+
+	// Export
+	#define EXPORT extern "C"
+
+// Otherwise
+#else
+
+	// Export
+	#define EXPORT
+
+	// Emscripten keepalive
+	#define EMSCRIPTEN_KEEPALIVE
+#endif
 
 
 // Constants
@@ -20,19 +53,19 @@ static const uint8_t SIZE_SCALING_FACTOR = 2;
 // Function prototypes
 
 // Invalid size
-extern "C" size_t EMSCRIPTEN_KEEPALIVE invalidSize();
+EXPORT size_t EMSCRIPTEN_KEEPALIVE invalidSize();
 
 // Get compress size
-extern "C" size_t EMSCRIPTEN_KEEPALIVE compressSize(const uint8_t *input, size_t inputSize);
+EXPORT size_t EMSCRIPTEN_KEEPALIVE compressSize(const uint8_t *input, size_t inputSize);
 
 // Compress
-extern "C" bool EMSCRIPTEN_KEEPALIVE compress(uint8_t *result, size_t resultSize, const uint8_t *input, size_t inputSize);
+EXPORT bool EMSCRIPTEN_KEEPALIVE compress(uint8_t *result, size_t resultSize, const uint8_t *input, size_t inputSize);
 
 // Get decompress size
-extern "C" size_t EMSCRIPTEN_KEEPALIVE decompressSize(const uint8_t *input, size_t inputSize);
+EXPORT size_t EMSCRIPTEN_KEEPALIVE decompressSize(const uint8_t *input, size_t inputSize);
 
 // Deompress
-extern "C" bool EMSCRIPTEN_KEEPALIVE decompress(uint8_t *result, size_t resultSize, const uint8_t *input, size_t inputSize);
+EXPORT bool EMSCRIPTEN_KEEPALIVE decompress(uint8_t *result, size_t resultSize, const uint8_t *input, size_t inputSize);
 
 
 // Supporting function implementation

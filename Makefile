@@ -1,10 +1,10 @@
 # Library parameters
 NAME = "SMAZ"
-VERSION = "0.0.4"
+VERSION = "0.0.5"
 CC = "em++"
 CFLAGS = -Wall -Wno-writable-strings -D NDEBUG -Oz -finput-charset=UTF-8 -fexec-charset=UTF-8 -funsigned-char -ffunction-sections -fdata-sections -D VERSION=$(VERSION) -I smaz-master/ -s MODULARIZE=1 --memory-init-file=0 -s ABORTING_MALLOC=0 -s ALLOW_MEMORY_GROWTH=1 --closure 1 -flto -fno-rtti -fno-exceptions -s NO_FILESYSTEM=1 -s DISABLE_EXCEPTION_CATCHING=1 -s EXPORTED_FUNCTIONS="['_malloc', '_free']" -s EXPORT_NAME="smaz"
 LIBS =
-SRCS = "main.cpp" "smaz-master/smaz.c"
+SRCS = "./main.cpp" "./smaz-master/smaz.c"
 PROGRAM_NAME = $(subst $\",,$(NAME))
 
 # Make WASM
@@ -27,15 +27,15 @@ asmjs:
 npm:
 	$(CC) $(CFLAGS) -s WASM=1 -s BINARYEN_ASYNC_COMPILATION=0 -s SINGLE_FILE=1 -o "./wasm.js" $(SRCS) $(LIBS)
 	$(CC) $(CFLAGS) -s WASM=0 -s BINARYEN_ASYNC_COMPILATION=0 -s SINGLE_FILE=1 -o "./asm.js" $(SRCS) $(LIBS)
-	echo "const smaz = (typeof WebAssembly !== \"undefined\") ? require(\"./wasm.js\") : require(\"./asm.js\");" > "./$(PROGRAM_NAME).js"
-	cat "./main.js" >> "./$(PROGRAM_NAME).js"
+	echo "try {module[\"exports\"] = require(\"@nicolasflamel/smaz-native\"); return;} catch(error) {}const smaz = (typeof WebAssembly !== \"undefined\") ? require(\"./wasm.js\") : require(\"./asm.js\");" > "./index.js"
+	cat "./main.js" >> "./index.js"
 	rm -rf "./dist"
 	mkdir "./dist"
-	mv "./$(PROGRAM_NAME).js" "./wasm.js" "./asm.js" "./dist/"
+	mv "./index.js" "./wasm.js" "./asm.js" "./dist/"
 
 # Make clean
 clean:
-	rm -rf "./$(PROGRAM_NAME).js" "./$(PROGRAM_NAME).wasm" "./wasm.js" "./asm.js" "./dist" "./smaz-master" "./master.zip"
+	rm -rf "./$(PROGRAM_NAME).js" "./$(PROGRAM_NAME).wasm" "./index.js" "./wasm.js" "./asm.js" "./dist" "./smaz-master" "./master.zip"
 
 # Make dependencies
 dependencies:
