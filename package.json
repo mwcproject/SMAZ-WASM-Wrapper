@@ -1,6 +1,6 @@
 {
 	"name": "@nicolasflamel/smaz-wasm",
-	"version": "0.0.11",
+	"version": "0.0.12",
 	"description": "WASM wrapper around parts of the official SMAZ implementation",
 	"main": "./dist/index.js",
 	"files": [
