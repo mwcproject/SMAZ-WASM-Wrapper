@@ -1,6 +1,6 @@
 # Library parameters
 NAME = "SMAZ"
-VERSION = "0.0.20"
+VERSION = "0.0.21"
 CC = "em++"
 CFLAGS = -Wall -Wno-writable-strings -D NDEBUG -Oz -finput-charset=UTF-8 -fexec-charset=UTF-8 -funsigned-char -ffunction-sections -fdata-sections -D VERSION=$(VERSION) -I "./smaz-master/" -s MODULARIZE=1 --memory-init-file=0 -s ABORTING_MALLOC=0 -s ALLOW_MEMORY_GROWTH=1 --closure 1 -flto -fno-rtti -fno-exceptions -s NO_FILESYSTEM=1 -s DISABLE_EXCEPTION_CATCHING=1 -s EXPORTED_FUNCTIONS="['_malloc', '_free']" -s EXPORT_NAME="smaz"
 LIBS =
@@ -27,9 +27,9 @@ asmjs:
 npm:
 	$(CC) $(CFLAGS) -s WASM=1 -s BINARYEN_ASYNC_COMPILATION=0 -s SINGLE_FILE=1 -o "./wasm.js" $(SRCS) $(LIBS)
 	$(CC) $(CFLAGS) -s WASM=0 -s BINARYEN_ASYNC_COMPILATION=0 -s SINGLE_FILE=1 -o "./asm.js" $(SRCS) $(LIBS)
-	echo "\"use strict\"; try { module[\"exports\"] = require(\"@nicolasflamel/smaz-native\");} catch(error) { const smaz = (typeof WebAssembly !== \"undefined\") ? require(\"./wasm.js\") : require(\"./asm.js\");" > "./index.js"
+	echo "\"use strict\"; try { module[\"exports\"] = require(\"@nicolasflamel/smaz-react\");} catch(error) { try { module[\"exports\"] = require(\"@nicolasflamel/smaz-native\");} catch(error) { const smaz = (typeof WebAssembly !== \"undefined\") ? require(\"./wasm.js\") : require(\"./asm.js\");" > "./index.js"
 	cat "./main.js" >> "./index.js"
-	echo "}" >> "./index.js"
+	echo "}}" >> "./index.js"
 	rm -rf "./dist"
 	mkdir "./dist"
 	mv "./index.js" "./wasm.js" "./asm.js" "./dist/"
