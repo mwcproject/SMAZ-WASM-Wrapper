@@ -1,6 +1,6 @@
 {
 	"name": "@nicolasflamel/smaz-wasm",
-	"version": "0.0.27",
+	"version": "0.0.28",
 	"description": "WASM wrapper around parts of the official SMAZ implementation",
 	"main": "./dist/index.js",
 	"files": [
@@ -24,6 +24,6 @@
 	},
 	"optionalDependencies": {
 		"@nicolasflamel/smaz-native": "^0.0.22",
-		"@nicolasflamel/smaz-react": "^0.0.8"
+		"@nicolasflamel/smaz-react": "^0.0.9"
 	}
 }
