@@ -1,8 +1,4 @@
-dist
-smaz-master
-SMAZ.js
-SMAZ.wasm
 master.zip
-index.js
-wasm.js
-asm.js
+smaz-master
+SMAZ-NPM-Package-master
+dist
