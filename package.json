@@ -1,5 +1,5 @@
 {
-	"name": "@nicolasflamel/smaz-wasm",
+	"name": "@mwcproject/smaz-wasm",
 	"version": "0.0.31",
 	"description": "WASM wrapper for parts of the official SMAZ implementation",
 	"main": "./dist/index.js",
@@ -11,7 +11,7 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/NicolasFlamel1/SMAZ-WASM-Wrapper.git"
+		"url": "git+https://github.com/mwcproject/SMAZ-WASM-Wrapper.git"
 	},
 	"keywords": [
 		"SMAZ"
@@ -19,6 +19,6 @@
 	"author": "Nicolas Flamel",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/NicolasFlamel1/SMAZ-WASM-Wrapper/issues"
+		"url": "https://github.com/mwcproject/SMAZ-WASM-Wrapper/issues"
 	}
 }

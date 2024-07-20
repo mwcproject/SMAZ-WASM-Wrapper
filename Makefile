@@ -38,7 +38,7 @@ dependencies:
 	wget "https://github.com/antirez/smaz/archive/master.zip"
 	unzip "./master.zip"
 	rm "./master.zip"
-	wget "https://github.com/NicolasFlamel1/SMAZ-NPM-Package/archive/master.zip"
+	wget "https://github.com/mwcproject/SMAZ-NPM-Package/archive/master.zip"
 	unzip "./master.zip"
 	rm "./master.zip"
 	patch "./smaz-master/smaz.c" < "./SMAZ-NPM-Package-master/smaz.c.diff"
